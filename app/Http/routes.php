@@ -24,7 +24,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-
+//
 Route::get('/task', 'TaskController@index');
 Route::get('/task/{id}/{name}', 'TaskController@test');
 
