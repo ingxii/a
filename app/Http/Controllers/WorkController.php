@@ -10,13 +10,13 @@ class WorkController extends Controller
 {
     public function getIndex()
     {
-        echo 1;
+        return response("<b>getIndex</b>");
     }
 
     //
     public function anyTest()
     {
-        echo 2;
+        return response("anyTest");
     }
 
 
