@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication Routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+
 Route::get('user/{name?}', function ($name = 'John') {
     return $name;
 });
@@ -28,4 +36,12 @@ Route::get('/welcome', function () {
 Route::get('/task', 'TaskController@index');
 Route::get('/task/{id}/{name}', 'TaskController@test');
 
-Route::controller("admin","WorkController");
+// 模糊匹配
+Route::controller("work","WorkController");
+
+
+Route::get('admin/{type}/{page}', 'Admin\AdminController@index');
+Route::post('admin/{type}/{page}', 'Admin\AdminController@index');
+Route::get('admin/{edit}', 'Admin\AdminController@edit');
+Route::post('admin/{edit}', 'Admin\AdminController@edit');
+Route::get('admin', 'Admin\AdminController@index');
