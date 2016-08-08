@@ -51,7 +51,16 @@ Route::get('/welcome', function () {
 
 //
 Route::get('/task', 'TaskController@index');
-Route::get('/task/{id}/{name}', 'TaskController@test');
+Route::get('/task/{id}/{name}.html', 'TaskController@test');
 
 // 模糊匹配
 Route::controller("work","WorkController");
+
+
+// Route::resource('/task', 'TaskController');
+
+
+// // 别名
+// Route::get('/home', [
+//     'as' => 'home', 'uses' => 'HomeController@index'
+// ]);

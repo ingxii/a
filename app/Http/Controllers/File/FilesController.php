@@ -10,9 +10,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
 
-use App\Helpers\TaskList;
-use App\Jobs\HardWork;
-
 
 class FilesController extends Controller
 {
@@ -21,12 +18,10 @@ class FilesController extends Controller
 
     public function __construct(FilesManager $manager)
     {
-        $this->manager = $manager;
-        // $this->middleware('auth');
-        // die("<p>111111111111111</p>");
+        $this->middleware('auth');
 
-        // abort(404);
-        // abort(503);
+        $this->manager = $manager;
+
         $this->result=[];
         $this->result['success'] = 1;
         $this->result['error'] = '';
@@ -39,7 +34,6 @@ class FilesController extends Controller
 
         // $list = new TaskList();
         // $list->name= session('key');
-        // $this->dispatch(new HardWork($list));
 
 
         // // 目录信息

@@ -5,20 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Jobs\HardWork;
+
 
 class WorkController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+
     public function getIndex()
     {
-        return response("<b>getIndex</b>");
+        return response()->view('work', ['name'=>'aaaaaaa']);
     }
 
-    //
-    public function anyTest()
+    public function postIndex()
     {
-        return response("anyTest");
-    }
 
+        $data = [];
+        $data['msg'] = 'hello';
+        $data['name'] = rand();
+        $data['_'] = rand();
+        // $this->dispatch(new HardWork());
+        return response()->view('work', $data);
+    }
 
     public function missingMethod($parameters = array())
     {

@@ -21,12 +21,8 @@ function is_image($mimeType)
 
 
 function test(){
-    echo("<p>eeeeeee</p>");
+    echo("<b>Hello world!</b>");
 }
-
-// function dump($value){
-//     var_dump($value);
-// }
 
 
 function http_request($url, $data = null)
