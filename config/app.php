@@ -2,6 +2,10 @@
 
 return [
 
+    'uploads' => [
+        'storage' => 'uploads',//filesystems
+        'webpath' => '/uploads',
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Environment
