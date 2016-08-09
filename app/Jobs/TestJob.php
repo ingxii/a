@@ -8,23 +8,23 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use App\Helpers\TaskList;
+use App\Repositories\TaskRepository;
 
-class HardWork extends Job implements SelfHandling, ShouldQueue
+class TestJob extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
-    protected $list;
+    protected $task;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(TaskList $list)
+    public function __construct(TaskRepository $task)
     {
         //
-        $this->list = $list;
+        $this->task = $task;
     }
 
     /**
@@ -36,7 +36,7 @@ class HardWork extends Job implements SelfHandling, ShouldQueue
     {
         //
         echo("\r\nNew job\r\n");
-        dump($this->list);
+        dump($this->task);
         echo("\r\n");
     }
 }

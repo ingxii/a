@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Repositories;
 
 
-class TaskList
+class TaskRepository
 {
 
 

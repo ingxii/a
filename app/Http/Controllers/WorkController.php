@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Jobs\HardWork;
+use App\Jobs\TestJob;
 
 
 class WorkController extends Controller
@@ -28,14 +28,14 @@ class WorkController extends Controller
         $data['msg'] = 'hello';
         $data['name'] = rand();
         $data['_'] = rand();
-        // $this->dispatch(new HardWork());
+        // $this->dispatch(new TestJob());
         return response()->view('work', $data);
     }
 
     public function missingMethod($parameters = array())
     {
         //
-        $parameters['action'] = 'missingMethod';
+        $parameters['_'] = 'missingMethod';
 
 
         return response()->json($parameters);
