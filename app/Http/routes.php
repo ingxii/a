@@ -11,7 +11,12 @@
 |
 */
 
-App::setLocale('en');
+// App::setLocale('en');
+
+
+// $myfoo = App::make("myfoo");
+// echo $myfoo->add(1,2);
+
 // Authentication Routes...
 Route::get('/auth/login', 'Auth\AuthController@getLogin');
 Route::post('/auth/login', 'Auth\AuthController@postLogin');

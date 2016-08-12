@@ -12,8 +12,8 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         //
-        echo $request;
-        return response("aaa")
+
+        return response("")
             ->withCookie('name', 'value');
     }
     //

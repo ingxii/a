@@ -14,17 +14,17 @@ class TestJob extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
-    protected $task;
+    protected $data;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(TaskRepository $task)
+    public function __construct($data)
     {
         //
-        $this->task = $task;
+        $this->data = $data;
     }
 
     /**
@@ -35,8 +35,12 @@ class TestJob extends Job implements SelfHandling, ShouldQueue
     public function handle()
     {
         //
-        echo("\r\nNew job\r\n");
-        dump($this->task);
-        echo("\r\n");
+        // echo("
+        // -------------------------
+        // New job
+        // ");
+        echo("New job!");
+        // dump($this->task);
+        // echo("\r\n");
     }
 }
