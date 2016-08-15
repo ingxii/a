@@ -2,47 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\MyFooFacade;
 use Illuminate\Http\Request;
-use Log;
+
+
+
+use App\Contracts\TestContract;
+use App\Facades\Foo\MyFooFacade;
+// use App;
 
 class WorkController extends Controller
 {
-    public function __construct()
+    protected $test;
+
+    public function __construct(TestContract $test)
     {
         $this->middleware('auth');
 
+        $this->test = $test;
     }
 
     public function getIndex()
     {
-        return response()->view('work', ['name' => 'aaaaaaa']);
+        return response()->view('work', ['name' => '']);
     }
 
     public function postIndex()
     {
 
-        $data = [];
-        $data['msg'] = 'hello';
-        $data['name'] = rand();
-        $data['_'] = rand();
-        // $this->dispatch(new TestJob());
-        return response()->view('work', $data);
+        return response()->view('work', ['name' => rand(), 'msg' => 'hello']);
     }
 
     public function getLog(Request $request)
     {
-        Log::emergency("系统挂掉了", ['1', '2']);
+        // Log::emergency("系统挂掉了", ['1', '2']);
+        // Log::alert("数据库访问异常");
+        // Log::critical("系统出现未知错误");
+        // Log::error("指定变量不存在");
+        // Log::warning("该方法已经被废弃");
+        // Log::notice("用户在异地登录");
+        // Log::info("用户xxx登录成功");
+        // Log::debug("调试信息");
 
-        Log::alert("数据库访问异常");
-        Log::critical("系统出现未知错误");
-        Log::error("指定变量不存在");
-        Log::warning("该方法已经被废弃");
-        Log::notice("用户在异地登录");
-        Log::info("用户xxx登录成功");
-        Log::debug("调试信息");
-        echo MyFooFacade::add(4, 5);
+        // $this->dispatch(new TestJob(['a','b','c']));
 
+        echo MyFooFacade::add(1, 2);
+        echo $this->test->callMe('Q');
+
+    }
+
+    public function getTest(Request $request)
+    {
+        // $test = \App::make('test');
+        // $test->callMe('getTest');
     }
 
     public function missingMethod($parameters = array())
