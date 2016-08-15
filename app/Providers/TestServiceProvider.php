@@ -28,9 +28,16 @@ class TestServiceProvider extends ServiceProvider
     public function register()
     {
 
-        //使用singleton绑定单例
+        // 门面           使用singleton绑定只需要实现一次的单例     facade
         $this->app->singleton("myfoo", function(){
             return new MyFoo();
+        });
+
+
+
+        // 契约          接口绑定到实现          contract
+        $this->app->bind('App\Contracts\TestContract',function(){
+            return new TestCool();
         });
 
 
@@ -41,13 +48,6 @@ class TestServiceProvider extends ServiceProvider
         // $this->app->singleton('test',function(){
         //     return new TestCool();
         // });
-
-        // 接口绑定到实现
-        $this->app->bind('App\Contracts\TestContract',function(){
-            return new TestCool();
-        });
-
-
     }
 }
 

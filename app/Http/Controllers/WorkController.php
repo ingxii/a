@@ -47,6 +47,10 @@ class WorkController extends Controller
 
         echo MyFooFacade::add(1, 2);
         echo $this->test->callMe('Q');
+        echo MyFooFacade::add(1, 2);
+        echo $this->test->callMe('Q');
+        echo MyFooFacade::add(1, 2);
+        echo $this->test->callMe('Q');
 
     }
 

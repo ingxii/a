@@ -6,9 +6,13 @@ namespace App\Contracts;
 
 class TestCool implements TestContract
 {
+    private $left="(";
+    private $right=")";
     public function callMe($param)
     {
-        return "({$param})";
+        $this->left.="(";
+        $this->right.=")";
+        return "{$this->left}{$param}{$this->right}";
     }
 
     public function fuck()
