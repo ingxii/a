@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-
-
 use App\Contracts\TestContract;
 use App\Facades\Foo\MyFooFacade;
+use Illuminate\Http\Request;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
+
 // use App;
 
 class WorkController extends Controller
@@ -44,6 +44,12 @@ class WorkController extends Controller
         // Log::debug("调试信息");
 
         // $this->dispatch(new TestJob(['a','b','c']));
+        // $password = 1;
+        // if (Auth::attempt(['mobile' => '13480233787', 'password' => $password])) {
+        //     echo("<p>A</p>");
+        // } else {
+        //     echo("<p>B</p>");
+        // }
 
         echo MyFooFacade::add(1, 2);
         echo $this->test->callMe('Q');

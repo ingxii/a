@@ -41,12 +41,17 @@ Route::post('/admin/{edit}', 'Admin\AdminController@edit');
 Route::get('/admin', 'Admin\AdminController@index');
 
 
+
+Route::get('/user', 'UserController@index');
+Route::get('/user/test', 'UserController@test');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('user/{name?}', function ($name = 'John') {
+Route::get('test/{name?}', function ($name = 'John') {
     return $name;
 });
 

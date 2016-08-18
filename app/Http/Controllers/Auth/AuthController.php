@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -28,7 +30,9 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $username = 'mobile';
+    protected $redirectTo = '/user';
+    protected $redirectAfterLogout = '/auth/login';
 
     /**
      * Create a new authentication controller instance.
@@ -37,8 +41,27 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => ['logout', 'getLogout']]);
     }
+
+
+    // public function authenticate(Request $request)
+    // {
+    //     $password = $request->get('password');
+    //     $mobile = $request->get('mobile');
+    //     $remember = $request->get('remember');
+
+    //     $this->validate($request, [
+    //         'mobile' => 'required|max:255',
+    //         'password' => 'required',
+    //     ]);
+
+    //     if (Auth::attempt(['mobile' => $mobile, 'password' => $password], $remember)) {
+    //         // 认证通过...
+    //         // echo("<p>A</p>");
+    //         return redirect()->intended('/');
+    //     }
+    // }
 
     /**
      * Get a validator for an incoming registration request.
@@ -49,8 +72,9 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'mobile' => 'required|unique:users|min:6|max:32',
+            // 'name' => 'required|max:255',
+            // 'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -64,8 +88,9 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'mobile' => $data['mobile'],
+            // 'name' => $data['name'],
+            // 'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
