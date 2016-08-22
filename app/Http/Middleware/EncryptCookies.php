@@ -14,5 +14,6 @@ class EncryptCookies extends BaseEncrypter
     protected $except = [
         //
         'name',
+        // 'laravel_session',
     ];
 }

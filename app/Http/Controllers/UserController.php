@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 // use Auth;
 
 class UserController extends Controller
@@ -19,9 +20,17 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
+        $cookie = $request->cookie();
+        dump($cookie);
 
-        return response()->view('user.index', $this->param)
-            ->withCookie('name', 'value');
+        $session = $request->session();
+        dump($session->all());
+
+        dump($request->user());
+
+        // echo $request->ajax();
+
+        return response()->json($request->user()->id);
     }
 
     public function test(Request $request)
