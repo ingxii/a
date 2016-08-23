@@ -12,6 +12,7 @@
 {!! $content !!}
 </textarea>
 {!! $b !!}
+<input type="submit" value="提交哈哈">
 {{ csrf_field() }}
 </form>
 </body>
