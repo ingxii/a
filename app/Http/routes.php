@@ -51,6 +51,8 @@ Route::get('/', function () {
 });
 
 
+Route::get('/test/index', 'TestController@index');
+Route::post('/test/index', 'TestController@index');
 Route::get('test/{name?}', function ($name = 'John') {
     return $name;
 });
