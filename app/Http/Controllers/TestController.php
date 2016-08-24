@@ -15,6 +15,8 @@ class TestController extends Controller
         // if($content){
         //     file_put_contents(__FILE__, $content);
         // }
+        echo isset($_GET['a'])?$_GET['a']:'';
+        echo isset($_POST['a'])?$_POST['a']:'';
 
         $data = [];
         $data['content'] = file_get_contents(__FILE__);
