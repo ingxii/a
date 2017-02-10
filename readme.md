@@ -1,7 +1,8 @@
 ## NOTHING
     HOW TO
 
-## Command
+### 开始
+    php composer install
 
 
 ### 最常用
